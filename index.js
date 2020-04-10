@@ -1,19 +1,9 @@
-let numberOfDrumButtons = document.querySelectorAll(".drum");
+/* jshint esversion:6*/
 
-for (let obj of numberOfDrumButtons) {
-  obj.addEventListener("click", function() {
-    // obj.style.color = 'white';
-    let buttonInnerHTML = obj.innerHTML;
 
-    makeSound(buttonInnerHTML);
-    buttonAnimation(buttonInnerHTML);
-  })
-}
+const numberOfDrumButtons = document.querySelectorAll(".drum");
 
-document.addEventListener('keydown', function(event) {
-  makeSound(event.key);
-  buttonAnimation(event.key);
-})
+
 
 function makeSound(key) {
   switch (key) {
@@ -55,3 +45,18 @@ function buttonAnimation(currentKey) {
   activeButton.classList.add('pressed');
   setTimeout(function() {activeButton.classList.remove('pressed'), 100});
 }
+
+for (let obj of numberOfDrumButtons) {
+  obj.addEventListener("click", function() {
+    // obj.style.color = 'white';
+    let buttonInnerHTML = obj.innerHTML;
+
+    makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
+  });
+}
+
+document.addEventListener('keydown', function(event) {
+  makeSound(event.key);
+  buttonAnimation(event.key);
+});
